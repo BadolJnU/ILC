@@ -15,4 +15,5 @@ urlpatterns = [
 	url(r'^notice$', views.noticeView, name='notice'),
 	url(r'^blog$', views.blogList, name='bloglist'),
 	url(r'^blog/(?P<pk>\d+)$', views.blogView, name='blogview'),
+	url(r'^search_result/', views.searchResult, name='search_result'),
 ]

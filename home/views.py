@@ -7,6 +7,7 @@ from noticeboard.models import notice
 from .models import blog, contact_information
 from study_materials.models import free_materials
 from django.db.models import Q
+from django.contrib.postgres.search import SearchVector
 
 def home(request):
 	p = event_model.objects.filter().order_by('-id')[:3]
@@ -283,6 +284,26 @@ def blogList(request):
 		temp_dict['photo'] = str(s.photo.url)
 		blog_list.append(temp_dict)
 
+
+	return render(request, 'home/bloglist.html', {'selected_blog' : blog_list} )
+
+def searchResult(request):
+	val = request.GET["s"]
+
+	selected_blog = blog.objects.filter(Q(content__contains=val) | Q(title__contains=val) | Q(name__contains=val) | Q(university__contains=val))
+	
+	blog_list = []
+
+	for s in selected_blog:
+		temp_dict = {}
+		temp_dict['id'] = s.id
+		temp_dict['title'] = s.title
+		temp_dict['name'] = s.name
+		temp_dict['university'] = s.university
+		temp_dict['content'] = s.content
+		temp_dict['date'] = s.date
+		temp_dict['photo'] = str(s.photo.url)
+		blog_list.append(temp_dict)
 
 	return render(request, 'home/bloglist.html', {'selected_blog' : blog_list} )
 
