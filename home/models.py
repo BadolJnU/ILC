@@ -3,8 +3,11 @@ from tinymce.models import HTMLField
 
 class blog(models.Model):
 	title = models.CharField(max_length=1024, default='')
+	name = models.CharField(max_length=100, default='')
+	university = models.CharField(max_length=100, default='')
 	content = HTMLField()
 	date = models.DateTimeField(auto_now_add=True)
+	photo = models.ImageField(upload_to='imageFiles', blank=True)
 
 	def __str__(self):
 		return self.title

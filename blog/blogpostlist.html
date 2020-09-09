@@ -6,23 +6,42 @@
         <link rel="stylesheet" href="styles.css"> 
     </head>
     <body>
-        <div class="blog-post">
-            <div class="blog-post-img">
-                <img src="" alt="">
-            </div>
-            <div class="blog-post-info">
-                <div class="blog-pist-date">
-                    <span>Sunday</span>
-                    <span>9 September, 2020</span>
+        <div class="container">
+            <div class="row">
+                <div class="blog-post">
+                    <div class="blog-post-img">
+                        <img src="biday.jpg" alt="">
+                    </div>
+                    <div class="blog-post-info">
+                        <div class="blog-pist-date">
+                            <span>Sunday</span>
+                            <span>9 September, 2020</span>
+                        </div>
+                        <h1 class="blog-post-title">{{ blog.date }}</h1>
+                        <h1 class="blog-post-subtitle">Name, University Name</h1>
+                        <p class="blog-post-text">ভিন্ন চোখে কুয়াকাটা।
+                            সেবার দিন তারিখের হিসেব না মিলিয়ে ঝালকাঠি'র পেয়ারা বাজার ঘুরে কি মনে করে উঠে পরলাম কুয়াকাটা'র বাসে। কুয়াকাটা এর আগেও যাওয়া হয়েছে বেশ কয়েকবার, এবারের উদ্দেশ্য ছিল খাওয়া-দাওয়া আর ল্যাটায়ে ঘুমানো, কিন্তু সাথে দুজন ছিল তাদের কুয়াকাটা এই প্রথম। সেদিন ছিল ফুল মুন, রাতে আকাশে বিশাল এক এল্যুমিনিয়ামের চাঁদ ঝুলে ছিল, সেটা দেখতে দেখতেই মধ্য রাত। 
+                            ভোরে সবাই সূর্যদয় দেখতে যাবে, তেমনই প্ল্যান করে ঘুমুতে যাওয়ার কথা বলেও সবাই বসে রইলো সৈকতে, ফলসরূপ আমাদের ঘুম থেকে উঠতে উ…
+                        </p>
+                        <a href="#" class="blog-post-cta">Read More</a>
+                    </div>
                 </div>
-                <h1 class="blog-post-title">Shark Slighting</h1>
-                <h1 class="blog-post-subtitle">Name, University Name</h1>
-                <p class="blog-post-text">ভিন্ন চোখে কুয়াকাটা।
-                    সেবার দিন তারিখের হিসেব না মিলিয়ে ঝালকাঠি'র পেয়ারা বাজার ঘুরে কি মনে করে উঠে পরলাম কুয়াকাটা'র বাসে। কুয়াকাটা এর আগেও যাওয়া হয়েছে বেশ কয়েকবার, এবারের উদ্দেশ্য ছিল খাওয়া-দাওয়া আর ল্যাটায়ে ঘুমানো, কিন্তু সাথে দুজন ছিল তাদের কুয়াকাটা এই প্রথম। সেদিন ছিল ফুল মুন, রাতে আকাশে বিশাল এক এল্যুমিনিয়ামের চাঁদ ঝুলে ছিল, সেটা দেখতে দেখতেই মধ্য রাত। 
-                    ভোরে সবাই সূর্যদয় দেখতে যাবে, তেমনই প্ল্যান করে ঘুমুতে যাওয়ার কথা বলেও সবাই বসে রইলো সৈকতে, ফলসরূপ আমাদের ঘুম থেকে উঠতে উ…
-                </p>
-                <a href="#" class="blog-post-cta">Read More</a>
             </div>
         </div>
     </body>
 </html>
+<div class="col-md-12 col-sm-6" style="margin-bottom: 30px;">
+    <div style="overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+        <h3 style="margin-bottom: 0px; color: #666363; font-size: 25px; width: 75%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> {{ blog.title }} </h3>
+    </div>
+    <div >
+        <i class="far fa-calendar-alt" style="display: inline"></i>
+        <p style="display: inline; font-size: 14px; font-family: 'Ubuntu', sans-serif; color: #b26262;"> {{ blog.date }} </p>
+    </div>
+    <div style="max-height: 130px; margin-top: 10px; margin-bottom: 10px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+        {{ blog.content|safe }}
+    </div>
+    <div>
+        <a href="{% url 'blogview' pk=blog.id %}"><button class="btn"><span>Read More</span></button></a>
+    </div>
+</div>
