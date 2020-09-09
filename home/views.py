@@ -258,10 +258,10 @@ def noticeView(request):
 	return render(request, 'home/notice.html', {'selected_notice': selected_notice} )
 
 def blogList(request):
-	bolg_list = blog.objects.all().order_by('-date')
+	blog_list = blog.objects.all().order_by('-date')
 	page = request.GET.get('page', 1)
 
-	paginator = Paginator(bolg_list, 8)
+	paginator = Paginator(blog_list, 8)
 
 	try:
 		selected_blog = paginator.page(page)
@@ -269,8 +269,22 @@ def blogList(request):
 		selected_blog = paginator.page(1)
 	except EmptyPage:
 		selected_blog = paginator.page(paginator.num_pages)
+	
+	blog_list = []
 
-	return render(request, 'home/bloglist.html', {'selected_blog' : selected_blog} )
+	for s in selected_blog:
+		temp_dict = {}
+		temp_dict['id'] = s.id
+		temp_dict['title'] = s.title
+		temp_dict['name'] = s.name
+		temp_dict['university'] = s.university
+		temp_dict['content'] = s.content
+		temp_dict['date'] = s.date
+		temp_dict['photo'] = str(s.photo.url)
+		blog_list.append(temp_dict)
+
+
+	return render(request, 'home/bloglist.html', {'selected_blog' : blog_list} )
 
 def blogView(request, pk=None):
 	query = get_object_or_404(blog, pk=pk)
