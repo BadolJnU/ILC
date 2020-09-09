@@ -1,0 +1,443 @@
+{% extends "home/base.html" %}
+{% block nav_item_home %}active{% endblock nav_item_home %}
+{% block content %}
+{% load staticfiles %}
+<section class="flexslider">
+  <ul class="slides">
+    <li
+      style="background-image: url({% static 'home/img/1st-banner.jpg' %}); background-size: fit; background-repeat: no-repeat;"
+      class="overlay">
+      
+    </li>
+    <li
+      style="background-image: url({% static 'home/img/2nd-banner.jpg' %}); background-size: fit; background-repeat: no-repeat;"
+      class="overlay">
+      
+
+    </li>
+    <li
+      style="background-image: url({% static 'home/img/3rd-banner.jpg' %}); background-size: fit; background-repeat: no-repeat;"
+      class="overlay">
+      
+    </li>
+  </ul>
+</section>
+
+<section class="probootstrap-section probootstrap-section-colored">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-left section-heading probootstrap-animate">
+        <h2>অনুশীলনের নতুন আবহে স্বাগতম</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="probootstrap-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="probootstrap-flex-block">
+          <div class="probootstrap-text probootstrap-animate">
+            <h3><b>এক নজরে ilc</b> </h3>
+            <p style="text-align:justify; font-weight:400;color:black">
+              ছায়া শিক্ষা প্রতিষ্ঠান হিসেবে, আমাদের যাত্রা শুরু ২০০৮-এ। শুরু থেকেই আমরা চেয়েছি শিক্ষার্থীরা যেন মুখস্থ-বিদ্যার বাইরে গিয়ে শুদ্ধতার চর্চা করে। 'অনুশীলনের নতুন আবহ' স্লোগানকে সাথে নিয়ে আমরা বিশ্বাসী নতুনত্বে, অভিনবত্বে। অফলাইন, অনলাইন - সবখানেই আমরা আছি শিক্ষার্থীদের সাফল্যের সারথি হয়ে। বিশ্বাস করি সব বিষয়ে সমান গুরুত্ব দেয়াতে। আছি বন্ধুর মতো, সবসময় শিক্ষার্থীদের পাশাপাশি। শিক্ষার্থীদের কঠিন পথচলার ছায়াসঙ্গী ilc. 
+            </p>
+            <!-- <p><a href="#" class="btn btn-primary">Learn More</a></p> -->
+          </div>
+          <div class="probootstrap-image probootstrap-animate"
+            style="margin-bottom: 20px; background-image: url({% static 'home/img/banner_3.png' %})">
+            <!-- <a href="https://vimeo.com/45830194" class="btn-video popup-vimeo"><i class="icon-play3"></i></a> -->
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/xiP5BTILdhg" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section
+  class="probootstrap-section probootstrap-section-colored probootstrap-bg probootstrap-custom-heading probootstrap-tab-section"
+  style="background-image: url({% static 'home/img/slider2.jpg' %})">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center section-heading probootstrap-animate">
+        <h2 class="mb0">Highlights</h2>
+      </div>
+    </div>
+  </div>
+  <div class="probootstrap-tab-style-1">
+    <ul class="nav nav-tabs probootstrap-center probootstrap-tabs no-border">
+      <li class="active"><a data-toggle="tab" href="#featured-news">Upcoming Events</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="probootstrap-section probootstrap-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="tab-content">
+
+          <div id="featured-news" class="tab-pane fade in active">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="owl-carousel" id="owl1">
+                  {% for event in selected_event %}
+                  <div class="item">
+                    <a href="{% url 'events_param' pk=event.pk %}" class="probootstrap-featured-news-box">
+                      <figure class="probootstrap-media"><img src="{{event.title_image}}" alt="{{event.title}}"
+                          class="img-responsive" style="height: 225px; width: 100%"></figure>
+                      <div class="probootstrap-text">
+                        <h3 style="height: 10px; overflow: hidden; padding-bottom: 10rem;">{{event.title}}</h3>
+                        <span class="probootstrap-date"><i class="icon-calendar"></i> {{event.date}} </span>
+                        <span class="probootstrap-location"><i class="icon-location2"></i> {{event.location}} </span>
+                      </div>
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="probootstrap-section probootstrap-border-top">
+  <div class="container">
+  <!-- Start Course -->
+  <div class="row" >
+      <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+        <h2 style="color:#962C6A; font-weight:500">Courses</h2>
+      </div>
+    </div>
+    <!-- END row -->
+    <div class="row" style="display: table-cell;padding: 1em;border-bottom:1px solid #962C6A">
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/science.jpg' %}" alt="science" style="width:100%; height:250px;object-fit:cover; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left;">
+            <h4 style="font-size:30px;font-weight:500">HSC বিজ্ঞান</h4>
+            <p>বিজ্ঞানের জটিল সব বিষয়কে তুড়ি দিয়ে ঘুড়ি বানাতে চাইলে, আজই জয়েন করো। বিজ্ঞানে অজ্ঞান না হয়ে মজা করে বিজ্ঞান শেখো এখানেই।  </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/BS.jpg' %}" alt="Business Studies" style="width:100%; height:250px;object-fit:cover; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left">
+            <h4 style="font-size:30px;font-weight:500">HSC ব্যবসায় শিক্ষা</h4>
+            <p>DU FBS যদি হয় তোমার লক্ষ্য, স্বপ্ন যদি হয় বড়; এই কোর্স তোমারই জন্য। সব বিষয়ে সমান গুরুত্ব দেয়াই আমাদের উদ্দেশ্য।</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/HUMANITIES.jpg' %}" alt="Humanities" style="width:100%; height:250px;background-size: fit; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left">
+            <h4 style="font-size:30px;font-weight:500">HSC মানবিক</h4>
+            <p>শিখতে চাও, না নম্বর? যদি শিখতে চাও, জানতে চাও, মজা করে আদি থেকে অন্ত পড়তে চাও, তোমাকেই খুঁজছে এই কোর্স।</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/1.jpg' %}" alt="Humanities" style="width:100%; height:250px;background-size: fit; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left">
+            <h4 style="font-size:30px;font-weight:500">English Foundation Course</h4>
+            <p>ইংরেজি একটি ভাষা। অন্য যেকোনো ভাষার মতো এটিও শিখতে পারেন শুনে শুনে, বলে বলে। কোর্সের মূল লক্ষ্যই ভাষা হিসেবে ইংরেজি শিখা। যে-কেউ জয়েন করতে পারেন এই কোর্সে।</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/online.jpg' %}" alt="Humanities" style="width:100%; height:250px;background-size: fit; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left">
+            <h4 style="font-size:30px;font-weight:500">অনলাইন কোর্স</h4>
+            <p>সময়ের সাথে তাল মিলিয়ে ilc এখন অনলাইন প্ল্যাটফর্মে। অফলাইন কার্যক্রমের সাফল্য অনলাইনেও বজায় রাখতে ilc বরাবরের মতোই দৃঢ় প্রতিজ্ঞ।</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div style="display:block; margin-bottom:20px; line-height:1.42857143;border-radius: 2px; box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0;transition: box-shadow .25s;  ">
+          <a href="#" class="img-card">
+            <img src="{% static 'home/img/test.jpg' %}" alt="Humanities" style="width:100%; height:250px;background-size: fit; transition:all .25s ease">
+          </a>
+          <div style="padding:15px;text-align:left">
+            <h4 style="font-size:30px;font-weight:500">মডেল টেস্ট</h4>
+            <p>এইচএসসি পরীক্ষার জন্য সর্বশেষ প্রস্তুতি কি হতে পারে? নিঃসন্দেহে মডেল টেস্ট! এরই প্রেক্ষিতে ilc অফার করছে ৩ মাস ব্যাপী মডেল টেস্ট প্রোগ্রাম যা পূর্ণাঙ্গ প্রস্তুতি নামে পরিচিত।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Course -->
+    <!-- Start Student -->
+    <div class="row" style="padding-top:50px">
+      <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+        <h2  style="color:#962C6A; font-weight:500">মেধাবী মুখ</h2>
+      </div>
+    </div>
+    <!-- END row -->
+
+    <div class="row">
+      {% for student in student_list %}
+      <div class="col-md-3 col-sm-6">
+        <div class="probootstrap-teacher text-center probootstrap-animate">
+          <figure class="media">
+            <img style="height: 90px;" src="{{ student.photo }}" alt="Free Bootstrap Template by uicookies.com"
+              class="img-responsive">
+          </figure>
+          <div class="text">
+            <h3 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> {{student.name}} </h3>
+            <p>{{ student.subject }}</p>
+            <p>{{ student.university }}-{{student.batch}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row" style="text-align:center;border-bottom:1px solid #962C6A;padding-bottom:40px;padding-top:20px">
+      <a href="{% url 'stu' %}" class="btn btn-primary" style="background-color:#962C6A;border:none;padding: 15px 25px;text-decoration:none;text-align:center">See More</a>
+    </div>
+    <!-- End Student -->
+    <!-- Start Teacher -->
+    <div class="row" style="padding-top:50px">
+      <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+        <h2  style="color:#962C6A; font-weight:500">Teachers</h2>
+      </div>
+    </div>
+    <!-- END row -->
+
+    <div class="row" style="border-bottom:1px solid #962C6A;padding-bottom:20px">
+      {% for teacher in teacher_list %}
+      <div class="col-md-3 col-sm-6">
+        <div class="probootstrap-teacher text-center probootstrap-animate">
+          <figure class="media">
+            <img style="height: 90px;" src="{{ teacher.photo }}" alt="Free Bootstrap Template by uicookies.com"
+              class="img-responsive">
+          </figure>
+          <div class="text">
+            <h3 style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"> {{teacher.name}} </h3>
+            <p>{{ teacher.subject }}</p>
+            <ul class="probootstrap-footer-social">
+              <li class="twitter"><a target="_blank" href="{{teacher.twitter}}"><i class="icon-twitter"></i></a></li>
+              <li class="facebook"><a href="{{teacher.facebook}}"><i class="icon-facebook2"></i></a></li>
+              <li class="instagram"><a href="{{teacher.instagram}}"><i class="icon-instagram2"></i></a></li>
+              <li class="google-plus"><a href="{{teacher.googleplus}}"><i class="icon-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- End Teacher -->
+    <!-- start why -->
+    <div class="row" style="padding-top:50px">
+      <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+        <h2  style="color:#962C6A; font-weight:500">কেন ilc?</h2>
+        <!-- <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto provident qui tempore natus quos
+          quibusdam soluta at.</p> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Asperiores Maxime Modi</h3> -->
+            <p style="color:black">Implicit Learning বা স্বতঃস্ফূর্ত শিক্ষা একটি তত্ত্ব যেখানে কেউ কোন কিছু শেখে অভিজ্ঞতায়; মুখস্থ করে নয়! </p>
+          </div>
+        </div>
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Consectetur Adipisicing</h3> -->
+            <p style="color:black">Implicit Learning-এ বিশ্বাসী হয়ে, এই একাডেমিক ইন্সটিটিউশন চির নতুন সৃজনে, উদ্ভাবনে।</p>
+          </div>
+        </div>
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Aliquid Dolorum Saepe</h3> -->
+            <p style="color:black">শুরু থেকেই আমরা চেয়েছি- ভাবতে, ভাবাতে; শিখতে, শেখাতে; বুঝতে, বুঝাতে; মুখস্থ-বিদ্যার বাইরে গিয়ে শুদ্ধতার চর্চা করতে।</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Libero Maxime Molestiae</h3> -->
+            <p style="color:black">আছি বন্ধুর মতো, সবসময় পাশাপাশি। আমাদের সব পরিকল্পনা, সব আয়োজন শুধুই শিক্ষার্থীদের জন্য। </p>
+          </div>
+        </div>
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Eveniet Tempora Anisi</h3> -->
+            <p style="color:black">আছি নতুনত্বে, অভিনবত্বে। সৃজনী চিন্তার উদ্ভাবনে আমরা প্রস্তুত সবসময়, পাঠক্রমের যেকোনো পরিবর্তনে।</p>
+          </div>
+        </div>
+        <div class="service left-icon probootstrap-animate">
+          <div class="icon"><i class="icon-checkmark"></i></div>
+          <div class="text">
+            <!-- <h3>Laboriosam Quod Dignissimos</h3> -->
+            <p style="color:black">বিশ্বাস করি সব বিষয়ে সবসময় সমান গুরুত্ব দেয়াতে। তা না হলে কাঙ্ক্ষিত ফল সম্ভব নয়।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END why -->
+  </div>
+</section>
+
+
+
+
+
+
+
+<style>
+  .flexslider,
+  .flexslider .slides>li,
+  .slider-height {
+    height: 460px;
+  }
+
+  @media (max-width: 960px) {
+
+    .flexslider,
+    .flexslider .slides>li,
+    .slider-height {
+      height: 360px;
+    }
+  }
+
+  @media (max-width: 720px) {
+
+    .flexslider,
+    .flexslider .slides>li,
+    .slider-height {
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 540px) {
+
+    .flexslider,
+    .flexslider .slides>li,
+    .slider-height {
+      height: 200px;
+    }
+  }
+  .tcb-product-slider {
+  background: #333;
+  background-image: url(https://unsplash.it/1240/530?image=721);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 100px 0;
+}
+.tcb-product-slider .carousel-control {
+  width: 5%;
+}
+.tcb-product-item a {
+  color: #147196;
+}
+.tcb-product-item a:hover {
+  text-decoration: none;
+}
+.tcb-product-item .tcb-hline {
+  margin: 10px 0;
+  height: 1px;
+  background: #ccc;
+}
+@media all and (max-width: 768px) {
+  .tcb-product-item {
+    margin-bottom: 30px;
+  }
+}
+.tcb-product-photo {
+  text-align: center;
+  height: 180px;
+  background: #fff;
+}
+.tcb-product-photo img {
+  height: 100%;
+  display: inline-block;
+}
+.tcb-product-info {
+  background: #f0f0f0;
+  padding: 15px;
+}
+.tcb-product-title h4 {
+  margin-top: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tcb-product-rating {
+  color: #acacac;
+}
+.tcb-product-rating .active {
+  color: #FFB500;
+}
+.tcb-product-price {
+  color: firebrick;
+  font-size: 18px;
+}
+
+
+
+.details {
+    margin: 50px 0; }
+ .details h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 3px; }
+    .details .back-link {
+      text-align: center; }
+      .details .back-link a {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 15px 30px;
+        background: #333;
+        color: #fff;
+        border-radius: 24px; }
+        .details .back-link a svg {
+          margin-right: 10px;
+          vertical-align: text-top;
+          display: inline-block; }
+
+</style>
+
+<!-- <section class="probootstrap-cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="probootstrap-animate" data-animate-effect="fadeInRight">Get your admission now!</h2>
+          <a href="#" role="button" class="btn btn-primary btn-lg btn-ghost probootstrap-animate" data-animate-effect="fadeInLeft">Enroll</a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+{% endblock %}
