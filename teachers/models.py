@@ -4,10 +4,8 @@ class teacher(models.Model):
 	name = models.CharField(max_length=256)
 	subject = models.CharField(max_length=256)
 	teacher_photo = models.ImageField(upload_to='imageFiles', blank=True)
-	facebook_profile = models.CharField(max_length=1024, blank=True)
-	instagram_profile = models.CharField(max_length=1024, blank=True)
-	twitter_profile = models.CharField(max_length=1024, blank=True)
-	googlePlus_profile = models.CharField(max_length=1024, blank=True)
+	uni_sub = models.CharField(max_length=250,null=True)
+	uni = models.CharField(max_length=250,null=True)
 
 	def __str__(self):
 		return self.name

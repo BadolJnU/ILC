@@ -15,6 +15,8 @@ class blog(models.Model):
 class contact_information(models.Model):
 	name = models.CharField(max_length=100, default='')
 	email = models.CharField(max_length=200, default='')
+	phone = models.CharField(max_length=200,  default='')
+	institution = models.CharField(max_length=200, default='')
 	subject = models.CharField(max_length=300, default='')
 	message = models.TextField(max_length=1200, default='')
 

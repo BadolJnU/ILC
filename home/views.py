@@ -35,10 +35,8 @@ def home(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['facebook'] = t.facebook_profile
-		temp_dict['twitter'] = t.twitter_profile
-		temp_dict['instagram'] = t.instagram_profile
-		temp_dict['googleplus'] = t.googlePlus_profile
+		temp_dict['uni_sub'] = t.uni_sub
+		temp_dict['uni'] = t.uni
 		teacher_list.append(temp_dict)
 
 	context['teacher_list'] = teacher_list
@@ -127,7 +125,6 @@ def events(request):
 	selected_event['location'] = p.location
 	selected_event['title_image'] = p.title_image.url
 	selected_event['short_description'] = p.short_description
-	selected_event['youtube_vide_link'] = p.youtube_vide_link
 
 	q = event_model.objects.filter().order_by('-id')[1:]
 	all_event = []
@@ -140,7 +137,7 @@ def events(request):
 		temp_dict['location'] = event.location
 		temp_dict['title_image'] = event.title_image.url
 		temp_dict['short_description'] = event.short_description
-		temp_dict['youtube_vide_link'] = event.youtube_vide_link
+		
 		all_event.append(temp_dict)
 
 	context = {}
@@ -158,7 +155,7 @@ def events_param(request, pk=None):
 	selected_event['location'] = p.location
 	selected_event['title_image'] = p.title_image.url
 	selected_event['short_description'] = p.short_description
-	selected_event['youtube_vide_link'] = p.youtube_vide_link
+	
 	
 	q = event_model.objects.filter().order_by('-id').exclude(id=pk)
 
@@ -172,7 +169,6 @@ def events_param(request, pk=None):
 		temp_dict['location'] = event.location
 		temp_dict['title_image'] = event.title_image.url
 		temp_dict['short_description'] = event.short_description
-		temp_dict['youtube_vide_link'] = event.youtube_vide_link
 		all_event.append(temp_dict)
 
 	context = {}
@@ -192,10 +188,8 @@ def teachers(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['facebook'] = t.facebook_profile
-		temp_dict['twitter'] = t.twitter_profile
-		temp_dict['instagram'] = t.instagram_profile
-		temp_dict['googleplus'] = t.googlePlus_profile
+		temp_dict['uni_sub'] = t.uni_sub
+		temp_dict['uni'] = t.uni
 		teacher_list.append(temp_dict)
 
 	context = {}
@@ -225,10 +219,13 @@ def contact(request):
 		try:
 			name = request.POST['name']
 			email = request.POST['email']
+			phone = request.POST['phone']
+			institution = request.POST['institution']
 			subject = request.POST['subject']
 			message = request.POST['name']
 			
-			cinfo = contact_information(name=name, email=email, subject=subject, message=message)
+			cinfo = contact_information(name=name, email=email, phone=phone, institution=institution, subject=subject, message=message)
+			print(cinfo)
 			cinfo.save()
 
 			context = {}
@@ -236,6 +233,7 @@ def contact(request):
 			return render(request, 'home/contact.html', context)
 		except:
 			context = {}
+			print("Hello")
 			context['success'] = False
 			return render(request, 'home/contact.html', context)
 	return render(request, 'home/contact.html')

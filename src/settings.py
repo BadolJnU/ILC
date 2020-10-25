@@ -143,29 +143,44 @@ STATICFILES_DIRS = [
 PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 4
 
 #'plugins': "table,spellchecker,paste,searchreplace",
+# tinymce
+
 
 # TinyMCE settings
+#TINYMCE_DEFAULT_CONFIG = {
+#    'theme': "advanced",
+#    'skin': "o2k7",
+#   'skin_variant': "silver",
+#   'relative_urls': False,
+#   'width': "900",
+#   'height': "500",
+#   'theme_advanced_toolbar_location': "top",
+#   'theme_advanced_toolbar_align': "left",
+#   'theme_advanced_statusbar_location': "bottom",
+#   'theme_advanced_resizing': True,
+#   'element_format': "html",
+#   'plugins' : "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,table",
+#   'theme_advanced_buttons3_add' : "tablecontrols",
+#   'table_styles' : "Header 1=header1;Header 2=header2;Header 3=header3",
+#   'table_cell_styles' : "Header 1=header1;Header 2=header2;Header 3=header3;Table Cell=tableCel1",
+#   'table_row_styles' : "Header 1=header1;Header 2=header2;Header 3=header3;Table Row=tableRow1",
+#   'table_cell_limit' : 100,
+#   'table_row_limit' : 5,
+#   'table_col_limit' : 5,
+#   'table_inline_editing': True,
+#}
 TINYMCE_DEFAULT_CONFIG = {
-    'theme': "advanced",
-    'skin': "o2k7",
-    'skin_variant': "silver",
-    'relative_urls': False,
-    'width': "900",
-    'height': "500",
-    'theme_advanced_toolbar_location': "top",
-    'theme_advanced_toolbar_align': "left",
-    'theme_advanced_statusbar_location': "bottom",
-    'theme_advanced_resizing': True,
-    'element_format': "html",
-    'plugins' : "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,table",
-    'theme_advanced_buttons3_add' : "tablecontrols",
-    'table_styles' : "Header 1=header1;Header 2=header2;Header 3=header3",
-    'table_cell_styles' : "Header 1=header1;Header 2=header2;Header 3=header3;Table Cell=tableCel1",
-    'table_row_styles' : "Header 1=header1;Header 2=header2;Header 3=header3;Table Row=tableRow1",
-    'table_cell_limit' : 100,
-    'table_row_limit' : 5,
-    'table_col_limit' : 5,
-    'table_inline_editing': True,
+    'selector': 'textarea',
+    'theme': 'modern',
+    'plugins': "table,paste,searchreplace,link ",
+    'toolbar1': 'bold italic underline | link | preview | ',
+    'contextmenu': 'formats | link ',
+    'menubar': False,
+    'inline': False,
+    'statusbar': True,
+    #'height': 600,
+    'width': 800,
+    'branding': True,
 }
 
 # TinyMCE settings end
