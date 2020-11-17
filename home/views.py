@@ -35,8 +35,6 @@ def home(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['uni_sub'] = t.uni_sub
-		temp_dict['uni'] = t.uni
 		teacher_list.append(temp_dict)
 
 	context['teacher_list'] = teacher_list
@@ -180,7 +178,7 @@ def events_param(request, pk=None):
 
 
 def teachers(request):
-	p = teacher.objects.filter()
+	p = teacher.objects.all().order_by('name')
 	teacher_list = []
 
 	for t in p:
@@ -188,18 +186,16 @@ def teachers(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['uni_sub'] = t.uni_sub
-		temp_dict['uni'] = t.uni
 		teacher_list.append(temp_dict)
 
 	context = {}
 	context['teacher_list'] = teacher_list
-	print(context)
+	
 	return render(request, 'home/teachers.html', context)
 
 
 def stu(request):
-	p = students.objects.filter()
+	p = students.objects.all().order_by('name')
 	student_list = []
 
 	for s in p:
@@ -258,9 +254,10 @@ def noticeView(request):
 
 def blogList(request):
 	blog_list = blog.objects.all().order_by('-date')
-	page = request.GET.get('page', 1)
+	paginator = Paginator(blog_list, 5)
+	page = request.GET.get('page')
 
-	paginator = Paginator(blog_list, 8)
+
 
 	try:
 		selected_blog = paginator.page(page)
@@ -269,21 +266,12 @@ def blogList(request):
 	except EmptyPage:
 		selected_blog = paginator.page(paginator.num_pages)
 	
-	blog_list = []
+	
 
-	for s in selected_blog:
-		temp_dict = {}
-		temp_dict['id'] = s.id
-		temp_dict['title'] = s.title
-		temp_dict['name'] = s.name
-		temp_dict['university'] = s.university
-		temp_dict['content'] = s.content
-		temp_dict['date'] = s.date
-		temp_dict['photo'] = str(s.photo.url)
-		blog_list.append(temp_dict)
+	
 
 
-	return render(request, 'home/bloglist.html', {'selected_blog' : blog_list} )
+	return render(request, 'home/bloglist.html', {'selected_blog' : selected_blog} )
 
 def searchResult(request):
 	val = request.GET["s"]
