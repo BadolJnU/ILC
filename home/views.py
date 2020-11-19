@@ -35,10 +35,6 @@ def home(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['facebook'] = t.facebook_profile
-		temp_dict['twitter'] = t.twitter_profile
-		temp_dict['instagram'] = t.instagram_profile
-		temp_dict['googleplus'] = t.googlePlus_profile
 		teacher_list.append(temp_dict)
 
 	context['teacher_list'] = teacher_list
@@ -127,7 +123,6 @@ def events(request):
 	selected_event['location'] = p.location
 	selected_event['title_image'] = p.title_image.url
 	selected_event['short_description'] = p.short_description
-	selected_event['youtube_vide_link'] = p.youtube_vide_link
 
 	q = event_model.objects.filter().order_by('-id')[1:]
 	all_event = []
@@ -140,7 +135,7 @@ def events(request):
 		temp_dict['location'] = event.location
 		temp_dict['title_image'] = event.title_image.url
 		temp_dict['short_description'] = event.short_description
-		temp_dict['youtube_vide_link'] = event.youtube_vide_link
+		
 		all_event.append(temp_dict)
 
 	context = {}
@@ -158,7 +153,7 @@ def events_param(request, pk=None):
 	selected_event['location'] = p.location
 	selected_event['title_image'] = p.title_image.url
 	selected_event['short_description'] = p.short_description
-	selected_event['youtube_vide_link'] = p.youtube_vide_link
+	
 	
 	q = event_model.objects.filter().order_by('-id').exclude(id=pk)
 
@@ -172,7 +167,6 @@ def events_param(request, pk=None):
 		temp_dict['location'] = event.location
 		temp_dict['title_image'] = event.title_image.url
 		temp_dict['short_description'] = event.short_description
-		temp_dict['youtube_vide_link'] = event.youtube_vide_link
 		all_event.append(temp_dict)
 
 	context = {}
@@ -184,7 +178,7 @@ def events_param(request, pk=None):
 
 
 def teachers(request):
-	p = teacher.objects.filter()
+	p = teacher.objects.all().order_by('name')
 	teacher_list = []
 
 	for t in p:
@@ -192,20 +186,16 @@ def teachers(request):
 		temp_dict['name'] = t.name
 		temp_dict['subject'] = t.subject
 		temp_dict['photo'] = str(t.teacher_photo.url)
-		temp_dict['facebook'] = t.facebook_profile
-		temp_dict['twitter'] = t.twitter_profile
-		temp_dict['instagram'] = t.instagram_profile
-		temp_dict['googleplus'] = t.googlePlus_profile
 		teacher_list.append(temp_dict)
 
 	context = {}
 	context['teacher_list'] = teacher_list
-	print(context)
+	
 	return render(request, 'home/teachers.html', context)
 
 
 def stu(request):
-	p = students.objects.filter()
+	p = students.objects.all().order_by('name')
 	student_list = []
 
 	for s in p:
@@ -225,10 +215,13 @@ def contact(request):
 		try:
 			name = request.POST['name']
 			email = request.POST['email']
+			phone = request.POST['phone']
+			institution = request.POST['institution']
 			subject = request.POST['subject']
 			message = request.POST['name']
 			
-			cinfo = contact_information(name=name, email=email, subject=subject, message=message)
+			cinfo = contact_information(name=name, email=email, phone=phone, institution=institution, subject=subject, message=message)
+			print(cinfo)
 			cinfo.save()
 
 			context = {}
@@ -236,6 +229,7 @@ def contact(request):
 			return render(request, 'home/contact.html', context)
 		except:
 			context = {}
+			print("Hello")
 			context['success'] = False
 			return render(request, 'home/contact.html', context)
 	return render(request, 'home/contact.html')
@@ -260,9 +254,10 @@ def noticeView(request):
 
 def blogList(request):
 	blog_list = blog.objects.all().order_by('-date')
-	page = request.GET.get('page', 1)
+	paginator = Paginator(blog_list, 5)
+	page = request.GET.get('page')
 
-	paginator = Paginator(blog_list, 8)
+
 
 	try:
 		selected_blog = paginator.page(page)
@@ -271,21 +266,12 @@ def blogList(request):
 	except EmptyPage:
 		selected_blog = paginator.page(paginator.num_pages)
 	
-	blog_list = []
+	
 
-	for s in selected_blog:
-		temp_dict = {}
-		temp_dict['id'] = s.id
-		temp_dict['title'] = s.title
-		temp_dict['name'] = s.name
-		temp_dict['university'] = s.university
-		temp_dict['content'] = s.content
-		temp_dict['date'] = s.date
-		temp_dict['photo'] = str(s.photo.url)
-		blog_list.append(temp_dict)
+	
 
 
-	return render(request, 'home/bloglist.html', {'selected_blog' : blog_list} )
+	return render(request, 'home/bloglist.html', {'selected_blog' : selected_blog} )
 
 def searchResult(request):
 	val = request.GET["s"]

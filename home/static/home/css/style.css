@@ -60,11 +60,11 @@ p, ul, ol {
 a {
   -webkit-transition: .3s all;
   transition: .3s all;
-  color: #6a41ed;
+  color: #962C6A;
 }
 
 a:hover, a:focus, a:active {
-  color: #582aeb;
+  color: #962C6A;
   text-decoration: none;
 }
 
@@ -315,6 +315,7 @@ a:hover, a:focus, a:active {
   padding-right: 0;
   margin-left: 15px;
   margin-right: 15px;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -487,7 +488,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-navbar .navbar-nav > li > a {
   color: black;
-  font-size: 15px;
+  
   position: relative;
 }
 
@@ -737,7 +738,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-hero.probootstrap-hero-colored {
-  background: #6a41ed;
+  background: #962C6A;
 }
 
 .probootstrap-hero.probootstrap-hero-colored h1 {
@@ -880,7 +881,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-showcase-nav ul li.active > a {
-  color: #6a41ed;
+  color: #962C6A;
   padding-left: 0px;
   display: block;
 }
@@ -919,7 +920,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
-  background: #FFF;
+  background: whitesmoke;
   border: #962C6A;
 }
 
@@ -929,7 +930,7 @@ a:hover, a:focus, a:active {
 }
 
 .btn.btn-ghost {
-  background: transparent;
+  background: whitesmoke;
   border: 1px solid #962C6A;
   color: #962C6A;
 }
@@ -968,7 +969,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-section.probootstrap-section-colored {
-  background: #6a41ed;
+  background:#962C6A;
 }
 
 .probootstrap-section.probootstrap-section-colored .section-heading h2 {
@@ -1046,7 +1047,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-cta {
   padding: 3em 0;
-  background: #6a41ed;
+  background: #962C6A;
   color: #ffffff;
 }
 
@@ -1101,7 +1102,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-cta .btn.btn-ghost:hover {
   background: #ffffff;
-  color: #6a41ed;
+  color: #962C6A;
 }
 
 .probootstrap-footer {
@@ -1378,7 +1379,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-counter-wrap .probootstrap-icon i {
-  font-size: 40px;
+  font-size: 20px;
   color: #962C6A;
 }
 
@@ -1610,7 +1611,7 @@ a:hover, a:focus, a:active {
   top: -30px;
   -webkit-transition: .3s all;
   transition: .3s all;
-  border-bottom: 3px solid #6a41ed;
+  border-bottom: 3px solid #962C6A !important;
 }
 
 .probootstrap-featured-news-box .probootstrap-text h3 {
@@ -1628,7 +1629,7 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-featured-news-box:hover .probootstrap-text, .probootstrap-featured-news-box:focus .probootstrap-text {
-  background: #6a41ed;
+  background: #962C6A;
   top: -40px;
   -webkit-box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
@@ -1698,7 +1699,7 @@ a:hover, a:focus, a:active {
 }
 
 .service.left-icon .icon i {
-  font-size: 40px;
+  font-size: 20px;
 }
 
 .service.left-icon .text {
@@ -2028,7 +2029,7 @@ a:hover, a:focus, a:active {
 .probootstrap-form .form-control:active, .probootstrap-form .form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-color: #6a41ed;
+  border-color: #962C6A;
 }
 
 .probootstrap-form textarea.form-control {
@@ -2475,7 +2476,7 @@ a:hover, a:focus, a:active {
   display: block;
   text-transform: none;
   letter-spacing: normal;
-  color: #6a41ed;
+  color: #962C6A;
   font-size: 14px;
 }
 
@@ -2485,7 +2486,7 @@ a:hover, a:focus, a:active {
 
 .probootstrap-pricing .probootstrap-price-wrap .probootstrap-price {
   font-size: 50px;
-  color: #6a41ed;
+  color: #962C6A;
   font-weight: 100;
   display: block;
   margin-bottom: 10px;
@@ -2601,15 +2602,7 @@ a:hover, a:focus, a:active {
   background-repeat: none;
 }
 
-.flexslider .slides > li.overlay:before {
-  content: "";
-  background: rgba(0, 0, 0, 0.3);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
+
 
 .flexslider .flex-control-paging {
   position: absolute;
@@ -3206,4 +3199,5 @@ a:hover, a:focus, a:active {
       transform: translate(0, -8rem);
   }
 }
+
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ILC &mdash; Implicit Learning Center</title>
+  <title>ILC &mdash; Implicit Learning Centre</title>
   <meta name="description" content="ILC Coaching Center" />
   <meta name="keywords" content="ILC Coaching Center" />
 
@@ -49,7 +49,7 @@
                 <a href="#"><i class="icon-twitter"></i></a>
               </li> -->
               <li>
-                <a href="https://www.facebook.com/groups/1582766111938899"><i class="icon-facebook2" style="color:#962C6A"></i></a>
+                <a href="https://www.facebook.com/ilcdhk/"><i class="icon-facebook2" style="color:#962C6A"></i></a>
               </li>
               <li>
                 <a href="https://www.instagram.com/implicitlearningcentre/?hl=en&fbclid=IwAR2VQtYwxFEQIQHIXCZaOqo0ovvDHtipCELnpHj3jE1HEz6Jcf-l40qR240"><i class="icon-instagram2" style="color:#962C6A"></i></a>
@@ -78,14 +78,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="{% url 'home' %}"><img src="{% static 'home/img/logo.png' %}" style="height: 70px; width: 150px; padding-top: 20px;" /></a>
+          <a href="{% url 'home' %}"><img class="logo" src="{% static 'home/img/logo.png' %}" style="height: 70px; width: 150px; padding-top:10px;padding-left:10px" /></a>
         </div>
 
         <div id="navbar-collapse" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="{% url 'home' %}"><b>Home</b></a></li>
-            <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Courses</a>
+            <li class="{% block nav_item_home %}{% endblock nav_item_home %}"><a href="{% url 'home' %}" style="font-size:15px; font-weight:500"><b>Home</b></a></li>
+            <li class="dropdown {% block nav_item_course %}{% endblock nav_item_course %}">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle" style="font-size:15px; font-weight:500"><b>Courses</b></a>
               <ul class="dropdown-menu">
                 <li><a href="{% url 'course_view_arts' %}">Arts</a></li>
                 <li><a href="{% url 'course_view_science' %}">Science</a></li>
@@ -98,14 +98,14 @@
               </ul>
             </li>
 
-            <li><a href="{% url 'teachers' %}">Teachers</a></li>
-            <li><a href="{% url 'events' %}">Events</a></li>
-            <li><a href="{% url 'notice' %}">Notice</a></li>
-            <li>
-              <a href="{% url 'photologue:pl-gallery-archive' %}">Gallery</a>
+            <li class="{% block nav_item_teacher %}{% endblock nav_item_teacher %}"><a href="{% url 'teachers' %}" style="font-size:15px; font-weight:500"><b>Teachers</b></a></li>
+            <li class="{% block nav_item_events %}{% endblock nav_item_events %}"><a href="{% url 'events' %}" style="font-size:15px; font-weight:500"><b>Events</b></a></li>
+            <li class="{% block nav_item_notice %}{% endblock nav_item_notice %}"><a href="{% url 'notice' %}" style="font-size:15px; font-weight:500"><b>Notice</b></a></li>
+            <li class="{% block nav_item_blog %}{% endblock nav_item_blog %}"><a href="{% url 'bloglist' %}" style="font-size:15px; font-weight:500"><b>Blog</b></a></li>
+            <li class="{% block nav_item_gallery %}{% endblock nav_item_gallery %}">
+              <a href="{% url 'photologue:pl-gallery-archive' %}" style="font-size:15px; font-weight:500"><b>Gallery</b></a>
             </li>
-            <li><a href="{% url 'bloglist' %}">Blog</a></li>
-            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li class="{% block nav_item_contact %}{% endblock nav_item_contact %}"><a href="{% url 'contact' %}" style="font-size:15px; font-weight:500"><b>Contact</b></a></li>
           </ul>
         </div>
       </div>
@@ -128,10 +128,10 @@
                   <a href="#"><i class="icon-twitter"></i></a>
                 </li> -->
                 <li>
-                  <a href="https://www.facebook.com/groups/1582766111938899"><i class="icon-facebook"></i></a>
+                  <a href="https://www.facebook.com/ilcdhk/"><i class="icon-facebook"></i></a>
                 </li>
                 <li>
-                  <a href=""><i class="icon-instagram2"></i></a>
+                  <a href="https://www.instagram.com/implicitlearningcentre/?hl=en&fbclid=IwAR2VQtYwxFEQIQHIXCZaOqo0ovvDHtipCELnpHj3jE1HEz6Jcf-l40qR240"><i class="icon-instagram2"></i></a>
                 </li>
                 <li>
                   <a href="https://www.youtube.com/channel/UCOoC5OshG3h5tjo9m8EAstw"><i class="icon-youtube"></i></a>
@@ -149,8 +149,8 @@
             <div class="probootstrap-footer-widget">
               <h3>Links</h3>
               <ul>
-                <li class="{% block nav_item_home %}{% endblock nav_item_home %}"><a href="{% url 'home' %}">Home</a></li>
-                <li class="{% block nav_item_course %}{% endblock nav_item_course %}"><a href="{% url 'course_view_science' %}">Courses</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li ><a href="{% url 'course_view_science' %}">Courses</a></li>
                 <li><a href="{% url 'teachers' %}">Teachers</a></li>
                 <li><a href="{% url 'events' %}">Events</a></li>
                 <li><a href="{% url 'notice' %}">Notice</a></li>
@@ -170,7 +170,7 @@
                   <i class="icon-location2"></i>
                   <span>440 Nayapara, Barnamala School Road, Dania, Dhaka</span>
                 </li>
-                <li><i class="icon-mail"></i><span>implicitlearningcentre@gmail.com</span></li>
+                <li><i class="icon-mail"></i><span>ilcbd2008@gmail.com</span></li>
                 <li><i class="icon-phone2"></i><span>+880-1855-111975</span></li>
               </ul>
             </div>
