@@ -171,8 +171,8 @@ PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 4
 #}
 TINYMCE_DEFAULT_CONFIG = {
     'selector': 'textarea',
-    'theme': 'modern',
-    'plugins': "table,paste,searchreplace,link ",
+    'theme': 'advanced',
+    'plugins': "table,paste,searchreplace ",
     'toolbar1': 'bold italic underline | link | preview | ',
     'contextmenu': 'formats | link ',
     'menubar': False,
